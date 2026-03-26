@@ -1,6 +1,10 @@
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-db_url = "postgresql://postgres:Rachana%408@localhost:5432/todo-back"
+load_dotenv()
+
+db_url = os.getenv("DATABASE_URL")
 engine = create_engine(db_url)
 session = sessionmaker(autocommit = False, autoflush= False , bind= engine)
